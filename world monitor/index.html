@@ -14,6 +14,21 @@
   </head>
   <body>
     <div id="app"></div>
+    <noscript>
+      <div class="startup-warning">WorldMonitor needs JavaScript to run. Enable JavaScript in your browser settings and reload the page.</div>
+    </noscript>
+    <script>
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          var app = document.getElementById('app');
+          if (!app || app.childElementCount > 0) return;
+          var note = document.createElement('div');
+          note.className = 'startup-warning';
+          note.textContent = 'WorldMonitor did not finish loading. The app runs entirely on JavaScript; your browser could not execute it. Try an up-to-date version of Chrome, Edge, or Firefox. If the problem persists, press F12 and check the Console tab for error messages, then keep the server terminal window open.';
+          document.body.appendChild(note);
+        }, 5000);
+      });
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
